@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Lines</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> 
+  <meta name="viewport" content="initial-scale=1.0, width=device-width"/>
+  <!--<link rel="shortcut icon" href="css/lines.ico" />-->
+  <link href="css/bootstrap.min.css" rel="stylesheet" />
+  <link href="css/style.css" rel="stylesheet" />
+  <script data-main="js/app" src="js/lib/require.js"></script>
+</head>
+<body>
+  <div class="container">
+   
+    <!-- //// main //// -->
+    <div id="main" class="row">
+      
+      <!-- /// title + options /// -->
+      <div id="header" class="col-xs-12 col-lg-2 col-lg-push-10">      
+        
+        <div id="options" class="col-xs-12">
+          <div class="row">
+           
+            <div id="title" class="col-xs-12 col-sm-3 col-md-12">
+                Lines
+            </div>
+            <div id="modeNameDiv" class="col-xs-4 col-sm-3 col-lg-12 noSidePadding top">
+              <span class="tbmar">Mode: <span id="modeName">Empty</span></span>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-lg-12 noSidePadding top">
+              <span class="tbmar">Dots: <input type="text" id="dotsNumber" size="3" value="3"></span>
+            </div>
+            <div class="col-xs-3 col-sm-2 col-lg-12 noSidePadding top">
+              <span class="tbmar">Speed: <input type="text" id="speedNumber" size="2" value="2"></span>
+            </div>
+            <div class="col-xs-2 col-lg-12 top">
+                <div id="setOptions" class="btn-regular">Set</div>
+            </div>
+          </div>
+        </div>
+       
+      </div>
+          
+      <!-- // screen + modes // -->
+      <div id="wrapper" class="col-xs-12 col-lg-10 col-lg-pull-2">
+        <canvas id="canvas">Not supported</canvas>
+        <span id="pause"></span>
+        <div id="modes" class="row">
+        </div>
+      </div> 
+           
+    </div>
+        
+    <!-- //////  footer  /////
+    <div id="footer" class="row">
+      <div id="foot" class="col-xs-12">
+        <p>- Press on a circles to activate modes. </p>
+        <p>- Enter number of dots and animation speed above.</p>
+      </div>
+    </div>
+    -->
+  </div>
+</body>
+</html>
