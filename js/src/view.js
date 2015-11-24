@@ -81,8 +81,11 @@ define(["jquery", "src/modes", "src/ui"], function($, modesArray, ui) {
         };   
       };  
         
+      /* /////////////////   EVENTS SUPPORT  ///////////////////*/    
       function checkEvents(dots){
         var windowScroll = $(window).scrollTop();
+          
+        /*///// move //////*/  
         if (dots[0].move){
           canvas.on('mousemove touchstart touchmove', function(e){
             e.preventDefault();
@@ -90,28 +93,53 @@ define(["jquery", "src/modes", "src/ui"], function($, modesArray, ui) {
             switch (e.type){
               case 'mousemove':
                   dots[0].loc = getBoundingBox(canvas,e.clientX,e.clientY);
+                  canvas.off('touchstart touchmove');
                   break;
               default:
                   dots[0].loc = getBoundingBox(canvas, e.originalEvent.touches[0].pageX, e.originalEvent.touches[0].pageY - windowScroll);
             } 
           });
-        } else if (dots[0].drag){
-          canvas.on('touchstart touchmove mousedown mousemove', function(e) { 
+        }
+        
+        /*///// click ////*/ 
+        if (dots[0].click){
+          canvas.on('mousedown mouseup touchstart touchend', function(e){
+            e.preventDefault();
+            e.stopPropagation();
+            switch (e.type){
+              case 'mousedown':
+                  dots[0].loc = getBoundingBox(canvas,e.clientX,e.clientY);
+                  canvas.off('touchstart touchend');
+                  break;
+              case 'mouseup':
+                  dots[0].loc = null;
+                  break;
+              default:
+                  dots[0].loc = getBoundingBox(canvas, e.originalEvent.touches[0].pageX, e.originalEvent.touches[0].pageY - windowScroll);
+            } 
+          });
+        }
+          
+        /* /////   drag   ///// */  
+        if (dots[0].drag){
+          canvas.on('touchstart touchmove touchend mousedown mousemove mouseup', function(e) { 
  	        e.preventDefault();
             e.stopPropagation();
             switch (e.type){
               case 'mousedown':
-                loc = getBoundingBox(canvas,e.clientX,e.clientY)    
+                dots[0].loc = getBoundingBox(canvas,e.clientX,e.clientY);   
+                dots[0].dragging = true;
+                canvas.off('touchstart touchmove touchend');
               case 'mousemove':
-                loc = (window.mousedown) ? getBoundingBox(canvas,e.clientX,e.clientY) : loc;
+                dots[0].loc = (dots[0].dragging) ? getBoundingBox(canvas,e.clientX,e.clientY) : dots[0].loc;
+                break;
+              case 'mouseup':
+                dots[0].dragging = false;
                 break;
               default:
-              loc = getBoundingBox(canvas, e.originalEvent.touches[0].pageX, e.originalEvent.touches[0].pageY - windowScroll);
-          }
-            callback(loc);
+              dots[0].loc = getBoundingBox(canvas, e.originalEvent.touches[0].pageX, e.originalEvent.touches[0].pageY - windowScroll);
+            }
           });
-        } else {
-          canvas.off('mousemove touchmove');
         }
       };
                    
@@ -180,7 +208,8 @@ define(["jquery", "src/modes", "src/ui"], function($, modesArray, ui) {
         wrapper.height(tempHeight + 'px');
         cw = canvas.width();
         ch = canvas.height();
-        ui.imgSize = (cw < 366) ? 30 : (cw > 940) ? 50 : 40;
+        ui.imgSize = (cw>940) ? 50 : (cw>400) ? 40 : (cw>245) ? 35 : 30;
+        ui.marginBtwBtns = (cw > 400) ? 5 : (cw > 298) ? 3 : 0;
         canvas.attr('width', cw + 'px')
               .attr('height', ch + 'px');
       };    

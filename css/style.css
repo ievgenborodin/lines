@@ -1,14 +1,14 @@
 @font-face {
   font-family: 'Cent';
-  src: url('../../css/fonts/Cent.eot');
-  src: url('../../css/fonts/Cent.eot?iefix') format('eot'),
-       url('../../css/fonts/Cent.ttf') format('truetype');
+  src: url('fonts/Cent.eot');
+  src: url('fonts/Cent.eot?iefix') format('eot'),
+       url('fonts/Cent.ttf') format('truetype');
 }
 @font-face {
   font-family: 'Gotham';
-  src: url('../../css/fonts/GothamHTF.otf');
-  src: url('../../css/fonts/GothamHTF.eot?iefix') format('eot'),
-       url('../../css/fonts/GothamHTF.ttf') format('truetype');
+  src: url('fonts/GothamHTF.otf');
+  src: url('fonts/GothamHTF.eot?iefix') format('eot'),
+       url('fonts/GothamHTF.ttf') format('truetype');
 }
 body {
     font-family: 'Cent';
