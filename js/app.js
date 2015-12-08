@@ -9,11 +9,16 @@ require.config({
 });
 
 /* //////     MAIN    /////// */
-define(["jquery", "src/view", "src/ui"], function($, View, ui) {
+define(["jquery", "src/view", "src/ui", "src/input"], function($, View, ui, Input) {
     /* // vars // */
     var view = new View(),
         speedNum, dotsNum, currMode = "empty",
-        start = false;
+        start = false,
+        input = Input.init({
+          wrapId: 'input-wrap',
+          buttonsId: 'input-buttons',
+          keys: ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9']
+        });
     
     /* //   set default values   // */
     updateOptionValues();
@@ -70,12 +75,23 @@ define(["jquery", "src/view", "src/ui"], function($, View, ui) {
     };
     window.requestAnimationFrame(animate);
     
+    $('#' + ui.dotsNumber).on('click', function(e){
+        input.reset($(this));
+    });
+    $('#' + ui.speedNumber).on('click', function(e){
+        input.reset($(this));
+    });
+    
     /*//   update options values   //*/
     function updateOptionValues(){
       var inputDotsNumber = $('#' + ui.dotsNumber), 
           inputSpeedNumber = $('#' + ui.speedNumber);
-      speedNum = parseInt( inputSpeedNumber.val() ); 
-      dotsNum = parseInt( inputDotsNumber.val() );
+      speedNum = parseInt( inputSpeedNumber[0].innerHTML );
+      speedNum = (speedNum > 25) ? 25 : speedNum;
+      inputSpeedNumber[0].innerHTML = speedNum;
+      dotsNum = parseInt( inputDotsNumber[0].innerHTML );
+      dotsNum = (dotsNum > 25) ? 25 : dotsNum;    
+      inputDotsNumber[0].innerHTML = dotsNum;      
     };
     
     /* ////     request animation frame    //// */

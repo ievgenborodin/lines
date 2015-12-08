@@ -121,6 +121,60 @@ input[type=text]{
     margin-top: 10px;
     margin-bottom: 15px;
 }
+
+#speedNumber, #dotsNumber{
+    border-radius: 3px;
+    background-color: #eee;
+    color: #555;
+    padding: .6em;
+}
+
+/* /////   input   /////*/
+#input-wrap{
+      display: none;
+      border-radius: 4px;
+      position: absolute;
+      text-align: center;
+      height: auto;
+      background-color: #333;
+      color: #333;
+  }
+  #input{
+      position: relative;
+      display: table;
+      width: 100%;
+      padding-bottom: .3em;
+  }
+  .bcol, #input-backspace{   
+      opacity: .8;
+      float: left;
+      background-color: #eee;
+  }
+  .mtext{
+      font-size: 16px;
+      display: inline-block;
+      vertical-align: middle;
+  }
+  #input-close{
+      position: absolute;
+      right: -20px;
+      top: 0;
+      width: 20px;
+      height: 20px;
+      color: #bbb;
+      background-color: #333;
+  }
+  #input-close:hover, .bcol:hover, 
+  #input-backspace:hover, #speedNumber:hover, #dotsNumber:hover{
+      opacity: 1;
+      cursor: pointer;
+  }
+  .bcol, #input-display, 
+  #input-close, #input-backspace{
+      border-radius: 3px;
+  }
+
+
 /*  ////////////    MEDIAS      /////////// */
 @media(min-width: 180px){ 
     #title{
