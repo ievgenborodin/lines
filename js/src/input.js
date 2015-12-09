@@ -13,7 +13,7 @@ define(["jquery", "src/ui"], function($, ui) {
         target[0].innerHTML = text;
       });
       
-      $('#input-close').on('click',function(e){
+      $('#input-done').on('click',function(e){
         wrap.css('display', 'none');
         target.css('text-decoration', 'none');
       });
@@ -21,18 +21,20 @@ define(["jquery", "src/ui"], function($, ui) {
       /* reset */
       this.reset = function(el){
         var element = el[0].getBoundingClientRect(),
-            tmpLeft, ww = window.innerWidth;
+            tmpLeft, ww = window.innerWidth,
+            scrollTop = $(window).scrollTop();
+          
         text = el[0].innerHTML;
         if (target) target.css('text-decoration', 'none');
         target = el;
         target.css('text-decoration', 'underline');
           
-        if (element.left + cfg.wrapWidth + 20 >= ww){
-            tmpLeft = ww - 20 - cfg.wrapWidth;
+        if (element.left + cfg.wrapWidth + 30 >= ww){
+            tmpLeft = ww - 30 - cfg.wrapWidth;
         } else tmpLeft = element.left;
           
         wrap.css('display', 'block').css('left', tmpLeft)
-            .css('top', element.top + element.height);
+            .css('top', element.top + element.height + scrollTop);
       };
     };
    
@@ -42,7 +44,7 @@ define(["jquery", "src/ui"], function($, ui) {
         i, keys = cfg.keys,
         keysLength = keys.length,        
         buttonsId = cfg.buttonsId || 'input-buttons',
-        marginLeft = cfg.margin || 3,
+        marginLeft = cfg.margin || 4,
         margin, inRow = 3, wrapWidth,
         backspaceId = 'input-backspace';
     

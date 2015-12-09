@@ -132,12 +132,11 @@ input[type=text]{
 /* /////   input   /////*/
 #input-wrap{
       display: none;
-      border-radius: 4px;
       position: absolute;
       text-align: center;
       height: auto;
-      background-color: #333;
-      color: #333;
+      color: #fff;
+      z-index: 999;
   }
   #input{
       position: relative;
@@ -146,32 +145,33 @@ input[type=text]{
       padding-bottom: .3em;
   }
   .bcol, #input-backspace{   
-      opacity: .8;
       float: left;
-      background-color: #eee;
+      background-color: #111;
+      border: 1px solid #333;
   }
   .mtext{
-      font-size: 16px;
+      font-size: 14px;
       display: inline-block;
       vertical-align: middle;
   }
-  #input-close{
+  #input-done{
       position: absolute;
-      right: -20px;
-      top: 0;
-      width: 20px;
-      height: 20px;
-      color: #bbb;
-      background-color: #333;
+      font-size: 24px;
+      right: -30px;
+      top: .2em;
+      width: 30px;
+      height: 30px;
+      color: #5dde79;
+      background-color: #111;
+      border: 1px solid #333;
   }
-  #input-close:hover, .bcol:hover, 
+  #input-done:hover, .bcol:hover, 
   #input-backspace:hover, #speedNumber:hover, #dotsNumber:hover{
-      opacity: 1;
       cursor: pointer;
   }
-  .bcol, #input-display, 
-  #input-close, #input-backspace{
-      border-radius: 3px;
+  .bcol, 
+  #input-done, #input-backspace{
+      border-radius: 5px;
   }
 
 
