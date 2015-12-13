@@ -10,4 +10,4 @@ Web application. Structured as a mini platform for implementation and testing ge
 ![image1](/scr1.jpg)
 
 ### Link
-http://feverart.com/lines/
+http://ievgenborodin.com/apps/lines/
